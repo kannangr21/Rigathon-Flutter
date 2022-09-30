@@ -44,6 +44,17 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(
           "TORQ - RIG'22",
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, "login", (Route<dynamic> route) => false);
+            },
+            icon: Icon(
+              Icons.logout,
+            ),
+          ),
+        ],
       ),
       body: Column(
         children: [
