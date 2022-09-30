@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -29,9 +31,18 @@ class _HomeScreenState extends State<HomeScreen> {
     print(await Geolocator.getCurrentPosition());
   }
 
+  final List<String> qualityParams = [
+    "TDS",
+    "TSS",
+    "Turbidity",
+    "pH",
+    "Water Temperature",
+    "Dissolved O2",
+  ];
+
   @override
   void initState() {
-    _determinePosition();
+    //_determinePosition();
     super.initState();
   }
 
@@ -42,11 +53,13 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Color(0xFF666CDB),
         centerTitle: true,
         title: Text(
-          "TORQ - RIG'22",
+          "TORQ - RiG'22",
         ),
         actions: [
           IconButton(
-            onPressed: () {
+            onPressed: () async {
+              FirebaseAuth.instance.signOut();
+              GoogleSignIn().signOut();
               Navigator.pushNamedAndRemoveUntil(
                   context, "login", (Route<dynamic> route) => false);
             },
@@ -56,10 +69,89 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: Column(
+      body: ListView(
         children: [
-          Text(
-            "Hi Kannan",
+          Container(
+            padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+            margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+            decoration: BoxDecoration(
+              color: Color(0xBB666CDB),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Column(
+              children: List.generate(
+                qualityParams.length,
+                (index) {
+                  return Column(
+                    children: [
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              qualityParams[index],
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "2829",
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 15,
+                        ),
+                        child: Divider(),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ),
+          Container(
+            height: 80,
+            margin: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+            decoration: BoxDecoration(
+              color: Colors.green,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Rating : ",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "9.8 / 10",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+            child: Text(
+              "Water is fit for drinking and other consumption purposes as well",
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
           ),
         ],
       ),
