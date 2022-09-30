@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'TORQ-Rig22',
-      initialRoute: '/',
+      initialRoute: '/', //home
       routes: {
         "/": (context) => HomeScreen(),
         "login": (context) => LoginScreen(),
