@@ -13,6 +13,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   String getInitialRoute() {
     FirebaseAuth _authInstance = FirebaseAuth.instance;
+
     if (_authInstance.currentUser == null) {
       return "login";
     } else {
@@ -23,8 +24,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'TORQ-Rig22',
-      initialRoute: '/', //home
+      initialRoute: getInitialRoute(), //home
       routes: {
         "/": (context) => HomeScreen(),
         "login": (context) => LoginScreen(),
