@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">823279406806-5vrlbq6jb7pcdkbsv46j3m7iv44av0ch.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">823279406806</string>
+    <string name="google_api_key" translatable="false">AIzaSyBc8ZkkqnPsQsmHAQ7DyR3eS2wInzjeW6c</string>
+    <string name="google_app_id" translatable="false">1:823279406806:android:ac410b64f727a58df0c377</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBc8ZkkqnPsQsmHAQ7DyR3eS2wInzjeW6c</string>
+    <string name="google_storage_bucket" translatable="false">torq---rigathon-22.appspot.com</string>
+    <string name="project_id" translatable="false">torq---rigathon-22</string>
+</resources>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "823279406806",
+    "project_id": "torq---rigathon-22",
+    "storage_bucket": "torq---rigathon-22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823279406806:android:ac410b64f727a58df0c377",
+        "android_client_info": {
+          "package_name": "com.example.torq_rig22"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823279406806-e0vchcthspl655qi8nan5odq6j008b26.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.torq_rig22",
+            "certificate_hash": "bdfbbab6d8ec3ae292ef897f4e346fa83c9ddcf0"
+          }
+        },
+        {
+          "client_id": "823279406806-5vrlbq6jb7pcdkbsv46j3m7iv44av0ch.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBc8ZkkqnPsQsmHAQ7DyR3eS2wInzjeW6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823279406806-5vrlbq6jb7pcdkbsv46j3m7iv44av0ch.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
