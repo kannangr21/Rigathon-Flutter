@@ -20,6 +20,7 @@ class GoogleAuth {
           accessToken: googleSignInAuthentication.accessToken,
           idToken: googleSignInAuthentication.idToken,
         );
+
         await _auth.signInWithCredential(_credential);
       } catch (error) {
         print(error);

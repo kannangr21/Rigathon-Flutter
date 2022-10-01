@@ -15,6 +15,8 @@ MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\vikra\.g
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\vikra\.gradle\caches\transforms-3\9e8f7bb87de6f65fdf4f2461727a9e1f\transformed\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:25:5-38:19
 MERGED from [com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:25:5-38:19
+MERGED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:36:5-42:19
+MERGED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:36:5-42:19
 MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:22:5-38:19
 MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:22:5-38:19
 MERGED from [com.google.android.gms:play-services-location:20.0.0] C:\Users\vikra\.gradle\caches\transforms-3\ba6893eb7f4e4475368a9ed2c8edcef0\transformed\jetified-play-services-location-20.0.0\AndroidManifest.xml:7:5-20
@@ -43,6 +45,8 @@ INJECTED from C:\Users\vikra\AndroidStudioProjects\torq_rig22\android\app\src\ma
 MERGED from C:\Users\vikra\AndroidStudioProjects\torq_rig22\android\app\src\main\AndroidManifest.xml:1:1-35:12
 MERGED from [:firebase_auth] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:firebase_core] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
+MERGED from [:google_maps_flutter_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\google_maps_flutter_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:geolocator_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-19:12
 MERGED from [:google_sign_in_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\google_sign_in_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\vikra\.gradle\caches\transforms-3\fd3b6827f851fae7145de79003530f65\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
@@ -50,6 +54,7 @@ MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\
 MERGED from [com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:17:1-73:12
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\vikra\.gradle\caches\transforms-3\9e8f7bb87de6f65fdf4f2461727a9e1f\transformed\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:15:1-40:12
+MERGED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:17:1-44:12
 MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.android.gms:play-services-location:20.0.0] C:\Users\vikra\.gradle\caches\transforms-3\ba6893eb7f4e4475368a9ed2c8edcef0\transformed\jetified-play-services-location-20.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] C:\Users\vikra\.gradle\caches\transforms-3\f7c642881814cbb8e4f66ec578c2a67b\transformed\jetified-play-services-safetynet-17.0.0\AndroidManifest.xml:17:1-24:12
@@ -106,6 +111,10 @@ MERGED from [:firebase_auth] C:\Users\vikra\AndroidStudioProjects\torq_rig22\bui
 MERGED from [:firebase_auth] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:firebase_core] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:firebase_core] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:google_maps_flutter_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\google_maps_flutter_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:google_maps_flutter_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\google_maps_flutter_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:geolocator_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:geolocator_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:google_sign_in_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\google_sign_in_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
@@ -120,6 +129,8 @@ MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\vikra\.g
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\vikra\.gradle\caches\transforms-3\9e8f7bb87de6f65fdf4f2461727a9e1f\transformed\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-location:20.0.0] C:\Users\vikra\.gradle\caches\transforms-3\ba6893eb7f4e4475368a9ed2c8edcef0\transformed\jetified-play-services-location-20.0.0\AndroidManifest.xml:5:5-44
@@ -188,6 +199,8 @@ MERGED from [:google_sign_in_android] C:\Users\vikra\AndroidStudioProjects\torq_
 MERGED from [:google_sign_in_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\google_sign_in_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-67
 MERGED from [com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:24:5-67
 	android:name
 		ADDED from C:\Users\vikra\AndroidStudioProjects\torq_rig22\android\app\src\debug\AndroidManifest.xml:7:22-64
 service#com.google.firebase.components.ComponentDiscoveryService
@@ -246,6 +259,8 @@ ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\t
 		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\transforms-3\c8184ab4f3a3d3a2f6d4da9abf16c7fa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:23:5-79
 	android:name
 		ADDED from [com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:24:22-76
 activity#com.google.firebase.auth.internal.GenericIdpActivity
@@ -314,6 +329,24 @@ ADDED from [com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\c
 		ADDED from [com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:31:13-36
 	android:name
 		ADDED from [com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:27:13-77
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:28:9-32
+queries
+ADDED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:30:5-34:15
+package#com.google.android.apps.maps
+ADDED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:33:9-64
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:33:18-61
+uses-library#org.apache.http.legacy
+ADDED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:39:9-41:40
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:41:13-37
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:40:13-50
 activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
 ADDED from [com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:23:9-27:75
 	android:excludeFromRecents
