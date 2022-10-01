@@ -34,16 +34,22 @@ class _HomeScreenState extends State<HomeScreen> {
     print(await Geolocator.getCurrentPosition());
   }
 
-  final List<String> qualityParams = [
-    "TDS",
-    "TSS",
-    "Turbidity",
-    "pH",
-    "Water Temperature",
-    "Dissolved O2",
-  ];
-  final List<Map> qualityParameters = [
-    {"name": "TDS"},
+  final List<Map<String, String>> qualityParameters = [
+    {"displayName": "TDS", "name": "tds", "unit": "p"},
+    {"displayName": "TSS", "name": "tss", "unit": "p"},
+    {"displayName": "Turbidity", "name": "turbidity", "unit": "p"},
+    {"displayName": "pH", "name": "pH", "unit": "p"},
+    {"displayName": "Dissolved O2", "name": "disOxygen", "unit": "p"},
+    {
+      "displayName": "Air Temperature",
+      "name": "atmosphericTemperature",
+      "unit": "F"
+    },
+    {
+      "displayName": "Water Temperature",
+      "name": "waterTemperature",
+      "unit": "F"
+    },
   ];
 
   bool isLoading = true;
@@ -120,170 +126,340 @@ class _HomeScreenState extends State<HomeScreen> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : ListView(
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(20, 30, 0, 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Consolidated Score:",
+          : readingObjects.isEmpty
+              ? Center(
+                  child: Text(
+                    "No data available!",
+                    style: TextStyle(
+                      color: Color(0xFF4F4D76),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                  ),
+                )
+              : ListView(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(20, 30, 0, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Consolidated Score:",
+                            style: TextStyle(
+                              color: Color(0xFF4F4D76),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 40,
+                          ),
+                          Center(
+                            child: SleekCircularSlider(
+                              innerWidget: (double value) {
+                                return Center(
+                                  child: Text(
+                                    value.toStringAsFixed(0) + " / 10",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30,
+                                    ),
+                                  ),
+                                );
+                              },
+                              appearance: CircularSliderAppearance(
+                                size: 250,
+                                customWidths: CustomSliderWidths(
+                                  trackWidth: 17,
+                                  progressBarWidth: 17,
+                                ),
+                                customColors: CustomSliderColors(
+                                  trackColor: Color(0xFFF2F8FF),
+                                  progressBarColor: Color(0xFF7671FF),
+                                  dotColor: Colors.transparent,
+                                ),
+                              ),
+                              min: 0,
+                              max: 10,
+                              initialValue: 6,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Text(
+                        "Detailed Analysis:",
                         style: TextStyle(
                           color: Color(0xFF4F4D76),
                           fontWeight: FontWeight.bold,
                           fontSize: 22,
                         ),
                       ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                      Center(
-                        child: SleekCircularSlider(
-                          innerWidget: (double value) {
-                            return Center(
-                              child: Text(
-                                value.toStringAsFixed(0) + " / 10",
-                                style: TextStyle(
-                                  color: Color(0xFF4F4D76),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 30,
-                                ),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: SizedBox(
+                        height: 320,
+                        child: GridView.count(
+                          physics: NeverScrollableScrollPhysics(),
+                          crossAxisCount: 2,
+                          childAspectRatio: 2.5,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEFF),
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                            );
-                          },
-                          appearance: CircularSliderAppearance(
-                            size: 250,
-                            customWidths: CustomSliderWidths(
-                              trackWidth: 17,
-                              progressBarWidth: 17,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    readingObjects[0].tds.toStringAsFixed(2),
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "TDS",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            customColors: CustomSliderColors(
-                              trackColor: Color(0xFFF2F8FF),
-                              progressBarColor: Color(0xFF7671FF),
-                              dotColor: Colors.transparent,
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEFF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    readingObjects[0].tss.toStringAsFixed(2),
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "TSS",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          min: 0,
-                          max: 10,
-                          initialValue: 6,
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEFF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    readingObjects[0]
+                                        .turbidity
+                                        .toStringAsFixed(2),
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Turbidity",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEFF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    readingObjects[0].pH.toStringAsFixed(2),
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "pH",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEFF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    readingObjects[0].spO2.toStringAsFixed(2),
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Dissolved O2",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEFF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    readingObjects[0].atTemp.toStringAsFixed(2),
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Air Temperature",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEFF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    readingObjects[0]
+                                        .waterTemp
+                                        .toStringAsFixed(2),
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Water Temperature",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0),
-                  child: Text(
-                    "Detailed Analysis:",
-                    style: TextStyle(
-                      color: Color(0xFF4F4D76),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
                     ),
-                  ),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: SizedBox(
-                    height: 250,
-                    child: GridView.count(
-                      physics: NeverScrollableScrollPhysics(),
-                      crossAxisCount: 2,
-                      childAspectRatio: 2.5,
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      children: List.generate(
-                        qualityParams.length,
-                        (index) => Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xFFEEEEFF),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "993",
-                                style: TextStyle(
-                                  color: Color(0xFF4F4D76),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              Text(
-                                qualityParams[index],
-                                style: TextStyle(
-                                  color: Color(0xFF4F4D76),
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 25),
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Drinkable",
+                            style: TextStyle(
+                              fontSize: 22,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 25),
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(7),
-                    ),
-                    child: Center(
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0, top: 35),
                       child: Text(
-                        "Drinkable",
+                        "Historical Analysis:",
                         style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.white,
+                          color: Color(0xFF4F4D76),
                           fontWeight: FontWeight.bold,
+                          fontSize: 22,
                         ),
                       ),
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20.0, top: 35),
-                  child: Text(
-                    "Historical Analysis:",
-                    style: TextStyle(
-                      color: Color(0xFF4F4D76),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
+                    SizedBox(
+                      height: 25,
                     ),
-                  ),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                SfCartesianChart(
-                  // Initialize category axis
-                  primaryXAxis: CategoryAxis(
-                    arrangeByIndex: true,
-                  ),
+                    SfCartesianChart(
+                      // Initialize category axis
+                      primaryXAxis: CategoryAxis(
+                        arrangeByIndex: true,
+                      ),
 
-                  series: <LineSeries<Reading, String>>[
-                    LineSeries<Reading, String>(
-                      // Bind data source
-                      dataSource: readingObjects,
-                      xValueMapper: (Reading reading, _) =>
-                          reading.timestamp.day.toString(),
-                      yValueMapper: (Reading reading, _) =>
-                          reading.aquamanScore,
+                      series: <LineSeries<Reading, String>>[
+                        LineSeries<Reading, String>(
+                          // Bind data source
+                          dataSource: readingObjects,
+                          xValueMapper: (Reading reading, _) =>
+                              reading.timestamp.hour.toString(),
+                          yValueMapper: (Reading reading, _) =>
+                              reading.aquamanScore,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 25,
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 25,
-                ),
-              ],
-            ),
     );
   }
 }
