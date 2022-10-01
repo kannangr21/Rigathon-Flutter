@@ -34,33 +34,19 @@ class _HomeScreenState extends State<HomeScreen> {
     print(await Geolocator.getCurrentPosition());
   }
 
-  final List<Map<String, String>> qualityParameters = [
-    {"displayName": "TDS", "name": "tds", "unit": "p"},
-    {"displayName": "TSS", "name": "tss", "unit": "p"},
-    {"displayName": "Turbidity", "name": "turbidity", "unit": "p"},
-    {"displayName": "pH", "name": "pH", "unit": "p"},
-    {"displayName": "Dissolved O2", "name": "disOxygen", "unit": "p"},
-    {
-      "displayName": "Air Temperature",
-      "name": "atmosphericTemperature",
-      "unit": "F"
-    },
-    {
-      "displayName": "Water Temperature",
-      "name": "waterTemperature",
-      "unit": "F"
-    },
-  ];
-
   bool isLoading = true;
 
   void fetchData() async {
+    readingObjects.clear();
     setState(() {
       isLoading = true;
     });
     try {
-      var response = await Dio().get('http://43.204.238.31/quality/getAllData');
-      deserializeJSON(response.data["quality"]);
+      Dio dioInstance = Dio();
+      var response = await dioInstance
+          .get('http://43.204.238.31/quality/getByNode/device1');
+
+      deserializeJSON(response.data["values"]);
     } catch (e) {
       print(e);
     }
@@ -73,10 +59,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void deserializeJSON(List readings) {
     int count = 0;
-    for (Map reading in readings) {
+    for (Map reading in readings.reversed) {
       if (count == 15) break;
       count++;
-
+      print(DateTime.parse(reading["createdAt"]));
       readingObjects.add(
         Reading(
           atTemp: reading["atmosphericTemperature"],
@@ -87,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
           pH: reading["pH"],
           spO2: reading["disOxygen"],
           timestamp: reading["createdAt"],
+          aquamanScore: reading["scale"],
         ),
       );
     }
@@ -107,6 +94,14 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         title: Text(
           "TORQ - RiG'22",
+        ),
+        leading: IconButton(
+          icon: Icon(
+            Icons.refresh,
+          ),
+          onPressed: () {
+            fetchData();
+          },
         ),
         actions: [
           IconButton(
@@ -160,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               innerWidget: (double value) {
                                 return Center(
                                   child: Text(
-                                    value.toStringAsFixed(0) + " / 10",
+                                    value.toStringAsFixed(1) + " / 10",
                                     style: TextStyle(
                                       color: Color(0xFF4F4D76),
                                       fontWeight: FontWeight.bold,
@@ -183,7 +178,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               min: 0,
                               max: 10,
-                              initialValue: 6,
+                              initialValue: readingObjects[0].aquamanScore,
                             ),
                           ),
                         ],
@@ -206,7 +201,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: SizedBox(
-                        height: 320,
+                        height: 165,
                         child: GridView.count(
                           physics: NeverScrollableScrollPhysics(),
                           crossAxisCount: 2,
@@ -240,32 +235,32 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                               ),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xFFEEEEFF),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    readingObjects[0].tss.toStringAsFixed(2),
-                                    style: TextStyle(
-                                      color: Color(0xFF4F4D76),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  Text(
-                                    "TSS",
-                                    style: TextStyle(
-                                      color: Color(0xFF4F4D76),
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            // Container(
+                            //   decoration: BoxDecoration(
+                            //     color: Color(0xFFEEEEFF),
+                            //     borderRadius: BorderRadius.circular(10),
+                            //   ),
+                            //   child: Column(
+                            //     mainAxisAlignment: MainAxisAlignment.center,
+                            //     children: [
+                            //       Text(
+                            //         readingObjects[0].tss.toStringAsFixed(2),
+                            //         style: TextStyle(
+                            //           color: Color(0xFF4F4D76),
+                            //           fontWeight: FontWeight.bold,
+                            //           fontSize: 20,
+                            //         ),
+                            //       ),
+                            //       Text(
+                            //         "TSS",
+                            //         style: TextStyle(
+                            //           color: Color(0xFF4F4D76),
+                            //           fontSize: 14,
+                            //         ),
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
                             Container(
                               decoration: BoxDecoration(
                                 color: Color(0xFFEEEEFF),
@@ -320,58 +315,58 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                               ),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xFFEEEEFF),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    readingObjects[0].spO2.toStringAsFixed(2),
-                                    style: TextStyle(
-                                      color: Color(0xFF4F4D76),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  Text(
-                                    "Dissolved O2",
-                                    style: TextStyle(
-                                      color: Color(0xFF4F4D76),
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xFFEEEEFF),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    readingObjects[0].atTemp.toStringAsFixed(2),
-                                    style: TextStyle(
-                                      color: Color(0xFF4F4D76),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  Text(
-                                    "Air Temperature",
-                                    style: TextStyle(
-                                      color: Color(0xFF4F4D76),
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            // Container(
+                            //   decoration: BoxDecoration(
+                            //     color: Color(0xFFEEEEFF),
+                            //     borderRadius: BorderRadius.circular(10),
+                            //   ),
+                            //   child: Column(
+                            //     mainAxisAlignment: MainAxisAlignment.center,
+                            //     children: [
+                            //       Text(
+                            //         readingObjects[0].spO2.toStringAsFixed(2),
+                            //         style: TextStyle(
+                            //           color: Color(0xFF4F4D76),
+                            //           fontWeight: FontWeight.bold,
+                            //           fontSize: 20,
+                            //         ),
+                            //       ),
+                            //       Text(
+                            //         "Dissolved O2",
+                            //         style: TextStyle(
+                            //           color: Color(0xFF4F4D76),
+                            //           fontSize: 14,
+                            //         ),
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
+                            // Container(
+                            //   decoration: BoxDecoration(
+                            //     color: Color(0xFFEEEEFF),
+                            //     borderRadius: BorderRadius.circular(10),
+                            //   ),
+                            //   child: Column(
+                            //     mainAxisAlignment: MainAxisAlignment.center,
+                            //     children: [
+                            //       Text(
+                            //         readingObjects[0].atTemp.toStringAsFixed(2),
+                            //         style: TextStyle(
+                            //           color: Color(0xFF4F4D76),
+                            //           fontWeight: FontWeight.bold,
+                            //           fontSize: 20,
+                            //         ),
+                            //       ),
+                            //       Text(
+                            //         "Air Temperature",
+                            //         style: TextStyle(
+                            //           color: Color(0xFF4F4D76),
+                            //           fontSize: 14,
+                            //         ),
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
                             Container(
                               decoration: BoxDecoration(
                                 color: Color(0xFFEEEEFF),
@@ -409,12 +404,20 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Container(
                         padding: EdgeInsets.symmetric(vertical: 25),
                         decoration: BoxDecoration(
-                          color: Colors.green,
+                          color: readingObjects[0].aquamanScore <= 3
+                              ? Colors.red
+                              : readingObjects[0].aquamanScore <= 5
+                                  ? Colors.yellow
+                                  : Colors.green,
                           borderRadius: BorderRadius.circular(7),
                         ),
                         child: Center(
                           child: Text(
-                            "Drinkable",
+                            readingObjects[0].aquamanScore <= 3
+                                ? "Not fit for use"
+                                : readingObjects[0].aquamanScore <= 5
+                                    ? "Use with Caution"
+                                    : "Usable Quality",
                             style: TextStyle(
                               fontSize: 22,
                               color: Colors.white,
@@ -441,13 +444,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     SfCartesianChart(
                       // Initialize category axis
                       primaryXAxis: CategoryAxis(
+                        title: AxisTitle(text: "Time -->"),
                         arrangeByIndex: true,
+                        isVisible: true,
                       ),
 
                       series: <LineSeries<Reading, String>>[
                         LineSeries<Reading, String>(
                           // Bind data source
-                          dataSource: readingObjects,
+                          dataSource: readingObjects.reversed.toList(),
                           xValueMapper: (Reading reading, _) =>
                               reading.timestamp.hour.toString(),
                           yValueMapper: (Reading reading, _) =>
@@ -482,7 +487,8 @@ class Reading {
       required String tss,
       required String pH,
       required String spO2,
-      required String timestamp}) {
+      required String timestamp,
+      required aquamanScore}) {
     this.atTemp = double.parse(atTemp);
     this.waterTemp = double.parse(waterTemp);
     this.tds = double.parse(tds);
@@ -491,10 +497,6 @@ class Reading {
     this.turbidity = double.parse(turbidity);
     this.spO2 = double.parse(spO2);
     this.timestamp = DateTime.parse(timestamp);
-    calcAquamanScore();
-  }
-
-  void calcAquamanScore() {
-    this.aquamanScore = this.turbidity + this.waterTemp;
+    this.aquamanScore = aquamanScore;
   }
 }
