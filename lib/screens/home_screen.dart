@@ -1,12 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class HomeScreen extends StatefulWidget {
-  final bool initialSignIn;
-  HomeScreen(this.initialSignIn);
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -34,21 +34,63 @@ class _HomeScreenState extends State<HomeScreen> {
     print(await Geolocator.getCurrentPosition());
   }
 
-  final List<String> qualityParams = [
-    "TDS",
-    "TSS",
-    "Turbidity",
-    "pH",
-    "Water Temperature",
-    "Dissolved O2",
-  ];
-  final List<Map> qualityParameters = [
-    {"name": "TDS"},
+  final List<Map<String, String>> qualityParameters = [
+    {"displayName": "TDS", "name": "tds", "unit": "p"},
+    {"displayName": "TSS", "name": "tss", "unit": "p"},
+    {"displayName": "Turbidity", "name": "turbidity", "unit": "p"},
+    {"displayName": "pH", "name": "pH", "unit": "p"},
+    {"displayName": "Dissolved O2", "name": "disOxygen", "unit": "p"},
+    {
+      "displayName": "Air Temperature",
+      "name": "atmosphericTemperature",
+      "unit": "F"
+    },
+    {
+      "displayName": "Water Temperature",
+      "name": "waterTemperature",
+      "unit": "F"
+    },
   ];
 
   bool isLoading = true;
 
-  void fetchData() async {}
+  void fetchData() async {
+    setState(() {
+      isLoading = true;
+    });
+    try {
+      var response = await Dio().get('http://43.204.238.31/quality/getAllData');
+      deserializeJSON(response.data["quality"]);
+    } catch (e) {
+      print(e);
+    }
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  List<Reading> readingObjects = [];
+
+  void deserializeJSON(List readings) {
+    int count = 0;
+    for (Map reading in readings) {
+      if (count == 15) break;
+      count++;
+
+      readingObjects.add(
+        Reading(
+          atTemp: reading["atmosphericTemperature"],
+          waterTemp: reading["waterTemperature"],
+          turbidity: reading["turbidity"],
+          tds: reading["tds"],
+          tss: reading["tss"],
+          pH: reading["pH"],
+          spO2: reading["disOxygen"],
+          timestamp: reading["createdAt"],
+        ),
+      );
+    }
+  }
 
   @override
   void initState() {
@@ -84,204 +126,375 @@ class _HomeScreenState extends State<HomeScreen> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : ListView(
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(20, 30, 0, 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Consolidated Score:",
+          : readingObjects.isEmpty
+              ? Center(
+                  child: Text(
+                    "No data available!",
+                    style: TextStyle(
+                      color: Color(0xFF4F4D76),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                  ),
+                )
+              : ListView(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(20, 30, 0, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Consolidated Score:",
+                            style: TextStyle(
+                              color: Color(0xFF4F4D76),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 40,
+                          ),
+                          Center(
+                            child: SleekCircularSlider(
+                              innerWidget: (double value) {
+                                return Center(
+                                  child: Text(
+                                    value.toStringAsFixed(0) + " / 10",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30,
+                                    ),
+                                  ),
+                                );
+                              },
+                              appearance: CircularSliderAppearance(
+                                size: 250,
+                                customWidths: CustomSliderWidths(
+                                  trackWidth: 17,
+                                  progressBarWidth: 17,
+                                ),
+                                customColors: CustomSliderColors(
+                                  trackColor: Color(0xFFF2F8FF),
+                                  progressBarColor: Color(0xFF7671FF),
+                                  dotColor: Colors.transparent,
+                                ),
+                              ),
+                              min: 0,
+                              max: 10,
+                              initialValue: 6,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: Text(
+                        "Detailed Analysis:",
                         style: TextStyle(
                           color: Color(0xFF4F4D76),
                           fontWeight: FontWeight.bold,
                           fontSize: 22,
                         ),
                       ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                      Center(
-                        child: SleekCircularSlider(
-                          innerWidget: (double value) {
-                            return Center(
-                              child: Text(
-                                value.toStringAsFixed(0) + " / 10",
-                                style: TextStyle(
-                                  color: Color(0xFF4F4D76),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 30,
-                                ),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: SizedBox(
+                        height: 320,
+                        child: GridView.count(
+                          physics: NeverScrollableScrollPhysics(),
+                          crossAxisCount: 2,
+                          childAspectRatio: 2.5,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEFF),
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                            );
-                          },
-                          appearance: CircularSliderAppearance(
-                            size: 250,
-                            customWidths: CustomSliderWidths(
-                              trackWidth: 17,
-                              progressBarWidth: 17,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    readingObjects[0].tds.toStringAsFixed(2),
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "TDS",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            customColors: CustomSliderColors(
-                              trackColor: Color(0xFFF2F8FF),
-                              progressBarColor: Color(0xFF7671FF),
-                              dotColor: Colors.transparent,
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEFF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    readingObjects[0].tss.toStringAsFixed(2),
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "TSS",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                          min: 0,
-                          max: 10,
-                          initialValue: 6,
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEFF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    readingObjects[0]
+                                        .turbidity
+                                        .toStringAsFixed(2),
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Turbidity",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEFF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    readingObjects[0].pH.toStringAsFixed(2),
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "pH",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEFF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    readingObjects[0].spO2.toStringAsFixed(2),
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Dissolved O2",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEFF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    readingObjects[0].atTemp.toStringAsFixed(2),
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Air Temperature",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEEEFF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    readingObjects[0]
+                                        .waterTemp
+                                        .toStringAsFixed(2),
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Water Temperature",
+                                    style: TextStyle(
+                                      color: Color(0xFF4F4D76),
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: SizedBox(
-                    height: 250,
-                    child: GridView.count(
-                      physics: NeverScrollableScrollPhysics(),
-                      crossAxisCount: 2,
-                      childAspectRatio: 2.5,
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      children: List.generate(
-                        qualityParams.length,
-                        (index) => Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xFFEEEEFF),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "993",
-                                style: TextStyle(
-                                  color: Color(0xFF4F4D76),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              Text(
-                                qualityParams[index],
-                                style: TextStyle(
-                                  color: Color(0xFF4F4D76),
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 25),
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Drinkable",
+                            style: TextStyle(
+                              fontSize: 22,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 25),
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(7),
-                    ),
-                    child: Center(
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0, top: 35),
                       child: Text(
-                        "Drinkable",
+                        "Historical Analysis:",
                         style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.white,
+                          color: Color(0xFF4F4D76),
                           fontWeight: FontWeight.bold,
+                          fontSize: 22,
                         ),
                       ),
                     ),
-                  ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    SfCartesianChart(
+                      // Initialize category axis
+                      primaryXAxis: CategoryAxis(
+                        arrangeByIndex: true,
+                      ),
+
+                      series: <LineSeries<Reading, String>>[
+                        LineSeries<Reading, String>(
+                          // Bind data source
+                          dataSource: readingObjects,
+                          xValueMapper: (Reading reading, _) =>
+                              reading.timestamp.hour.toString(),
+                          yValueMapper: (Reading reading, _) =>
+                              reading.aquamanScore,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                  ],
                 ),
-                // Container(
-                //   padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
-                //   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                //   decoration: BoxDecoration(
-                //     color: Color(0xBB666CDB),
-                //     borderRadius: BorderRadius.circular(15),
-                //   ),
-                //   child: Column(
-                //     children: List.generate(
-                //       qualityParams.length,
-                //       (index) {
-                //         return Column(
-                //           children: [
-                //             Container(
-                //               child: Row(
-                //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                 children: [
-                //                   Text(
-                //                     qualityParams[index],
-                //                     style: TextStyle(
-                //                       fontSize: 16,
-                //                       fontWeight: FontWeight.bold,
-                //                     ),
-                //                   ),
-                //                   Text(
-                //                     "2829",
-                //                     style: TextStyle(
-                //                       fontSize: 16,
-                //                     ),
-                //                   ),
-                //                 ],
-                //               ),
-                //             ),
-                //             Padding(
-                //               padding: EdgeInsets.symmetric(
-                //                 vertical: 15,
-                //               ),
-                //               child: Divider(),
-                //             ),
-                //           ],
-                //         );
-                //       },
-                //     ),
-                //   ),
-                // ),
-                // Container(
-                //   height: 80,
-                //   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                //   decoration: BoxDecoration(
-                //     color: Colors.green,
-                //   ),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //     children: [
-                //       Text(
-                //         "Rating : ",
-                //         style: TextStyle(
-                //           color: Colors.white,
-                //           fontSize: 25,
-                //           fontWeight: FontWeight.bold,
-                //         ),
-                //       ),
-                //       Text(
-                //         "9.8 / 10",
-                //         style: TextStyle(
-                //           color: Colors.white,
-                //           fontSize: 25,
-                //           fontWeight: FontWeight.bold,
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                // Padding(
-                //   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                //   child: Text(
-                //     "Water is fit for drinking and other consumption purposes as well",
-                //     style: TextStyle(
-                //       fontSize: 18,
-                //     ),
-                //   ),
-                // ),
-              ],
-            ),
     );
+  }
+}
+
+class Reading {
+  late double atTemp;
+  late double waterTemp;
+  late double turbidity;
+  late double tds;
+  late double tss;
+  late double pH;
+  late double spO2;
+  late DateTime timestamp;
+  late double aquamanScore;
+  Reading(
+      {required String atTemp,
+      required String waterTemp,
+      required String turbidity,
+      required String tds,
+      required String tss,
+      required String pH,
+      required String spO2,
+      required String timestamp}) {
+    this.atTemp = double.parse(atTemp);
+    this.waterTemp = double.parse(waterTemp);
+    this.tds = double.parse(tds);
+    this.tss = double.parse(tss);
+    this.pH = double.parse(pH);
+    this.turbidity = double.parse(turbidity);
+    this.spO2 = double.parse(spO2);
+    this.timestamp = DateTime.parse(timestamp);
+    calcAquamanScore();
+  }
+
+  void calcAquamanScore() {
+    this.aquamanScore = this.turbidity + this.waterTemp;
   }
 }
