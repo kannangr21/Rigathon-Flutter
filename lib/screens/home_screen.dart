@@ -1,12 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class HomeScreen extends StatefulWidget {
-  final bool initialSignIn;
-  HomeScreen(this.initialSignIn);
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -48,7 +48,43 @@ class _HomeScreenState extends State<HomeScreen> {
 
   bool isLoading = true;
 
-  void fetchData() async {}
+  void fetchData() async {
+    setState(() {
+      isLoading = true;
+    });
+    try {
+      var response = await Dio().get('http://43.204.238.31/quality/getAllData');
+      deserializeJSON(response.data["quality"]);
+    } catch (e) {
+      print(e);
+    }
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  List<Reading> readingObjects = [];
+
+  void deserializeJSON(List readings) {
+    int count = 0;
+    for (Map reading in readings) {
+      if (count == 15) break;
+      count++;
+
+      readingObjects.add(
+        Reading(
+          atTemp: reading["atmosphericTemperature"],
+          waterTemp: reading["waterTemperature"],
+          turbidity: reading["turbidity"],
+          tds: reading["tds"],
+          tss: reading["tss"],
+          pH: reading["pH"],
+          spO2: reading["disOxygen"],
+          timestamp: reading["createdAt"],
+        ),
+      );
+    }
+  }
 
   @override
   void initState() {
@@ -137,6 +173,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Text(
+                    "Detailed Analysis:",
+                    style: TextStyle(
+                      color: Color(0xFF4F4D76),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: SizedBox(
                     height: 250,
@@ -198,90 +248,77 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                // Container(
-                //   padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
-                //   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                //   decoration: BoxDecoration(
-                //     color: Color(0xBB666CDB),
-                //     borderRadius: BorderRadius.circular(15),
-                //   ),
-                //   child: Column(
-                //     children: List.generate(
-                //       qualityParams.length,
-                //       (index) {
-                //         return Column(
-                //           children: [
-                //             Container(
-                //               child: Row(
-                //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                 children: [
-                //                   Text(
-                //                     qualityParams[index],
-                //                     style: TextStyle(
-                //                       fontSize: 16,
-                //                       fontWeight: FontWeight.bold,
-                //                     ),
-                //                   ),
-                //                   Text(
-                //                     "2829",
-                //                     style: TextStyle(
-                //                       fontSize: 16,
-                //                     ),
-                //                   ),
-                //                 ],
-                //               ),
-                //             ),
-                //             Padding(
-                //               padding: EdgeInsets.symmetric(
-                //                 vertical: 15,
-                //               ),
-                //               child: Divider(),
-                //             ),
-                //           ],
-                //         );
-                //       },
-                //     ),
-                //   ),
-                // ),
-                // Container(
-                //   height: 80,
-                //   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                //   decoration: BoxDecoration(
-                //     color: Colors.green,
-                //   ),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.center,
-                //     children: [
-                //       Text(
-                //         "Rating : ",
-                //         style: TextStyle(
-                //           color: Colors.white,
-                //           fontSize: 25,
-                //           fontWeight: FontWeight.bold,
-                //         ),
-                //       ),
-                //       Text(
-                //         "9.8 / 10",
-                //         style: TextStyle(
-                //           color: Colors.white,
-                //           fontSize: 25,
-                //           fontWeight: FontWeight.bold,
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                // Padding(
-                //   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                //   child: Text(
-                //     "Water is fit for drinking and other consumption purposes as well",
-                //     style: TextStyle(
-                //       fontSize: 18,
-                //     ),
-                //   ),
-                // ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0, top: 35),
+                  child: Text(
+                    "Historical Analysis:",
+                    style: TextStyle(
+                      color: Color(0xFF4F4D76),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                SfCartesianChart(
+                  // Initialize category axis
+                  primaryXAxis: CategoryAxis(
+                    arrangeByIndex: true,
+                  ),
+
+                  series: <LineSeries<Reading, String>>[
+                    LineSeries<Reading, String>(
+                      // Bind data source
+                      dataSource: readingObjects,
+                      xValueMapper: (Reading reading, _) =>
+                          reading.timestamp.day.toString(),
+                      yValueMapper: (Reading reading, _) =>
+                          reading.aquamanScore,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 25,
+                ),
               ],
             ),
     );
+  }
+}
+
+class Reading {
+  late double atTemp;
+  late double waterTemp;
+  late double turbidity;
+  late double tds;
+  late double tss;
+  late double pH;
+  late double spO2;
+  late DateTime timestamp;
+  late double aquamanScore;
+  Reading(
+      {required String atTemp,
+      required String waterTemp,
+      required String turbidity,
+      required String tds,
+      required String tss,
+      required String pH,
+      required String spO2,
+      required String timestamp}) {
+    this.atTemp = double.parse(atTemp);
+    this.waterTemp = double.parse(waterTemp);
+    this.tds = double.parse(tds);
+    this.tss = double.parse(tss);
+    this.pH = double.parse(pH);
+    this.turbidity = double.parse(turbidity);
+    this.spO2 = double.parse(spO2);
+    this.timestamp = DateTime.parse(timestamp);
+    calcAquamanScore();
+  }
+
+  void calcAquamanScore() {
+    this.aquamanScore = this.turbidity + this.waterTemp;
   }
 }
