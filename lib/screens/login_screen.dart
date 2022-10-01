@@ -86,6 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text(
                       "RiGathon '22",
                       style: TextStyle(
+                        fontFamily: "Poppins",
                         color: Colors.white,
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
@@ -94,6 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text(
                       "Team TORQ",
                       style: TextStyle(
+                        fontFamily: "Poppins",
                         color: Colors.white,
                         fontSize: 35,
                       ),
@@ -124,6 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Text(
                         "Welcome,",
                         style: TextStyle(
+                          fontFamily: "Poppins",
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
                         ),
@@ -131,6 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Text(
                         "Login to continue",
                         style: TextStyle(
+                          fontFamily: "Poppins",
                           fontSize: 18,
                         ),
                       ),
@@ -179,6 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             : Text(
                                 "Continue with Google",
                                 style: TextStyle(
+                                  fontFamily: "Poppins",
                                   color: Colors.black,
                                 ),
                               ),
