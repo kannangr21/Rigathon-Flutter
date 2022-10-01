@@ -29,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         isLoading = false;
       });
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(

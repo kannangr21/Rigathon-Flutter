@@ -25,221 +25,243 @@
 18-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:24:5-79
 18-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:24:22-76
 19
-20    <application
-21        android:name="android.app.Application"
-22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-22-->[androidx.core:core:1.8.0] C:\Users\vikra\.gradle\caches\transforms-3\3f88ae2c847282c37ef484a82b3eb6e2\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
-23        android:debuggable="true"
-24        android:icon="@mipmap/ic_launcher"
-25        android:label="torq_rig22" >
-26        <activity
-27            android:name="com.example.torq_rig22.MainActivity"
-28            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-29            android:exported="true"
-30            android:hardwareAccelerated="true"
-31            android:launchMode="singleTop"
-32            android:theme="@style/LaunchTheme"
-33            android:windowSoftInputMode="adjustResize" >
-34
-35            <!--
-36                 Specifies an Android theme to apply to this Activity as soon as
-37                 the Android process has started. This theme is visible to the user
-38                 while the Flutter UI initializes. After that, this theme continues
-39                 to determine the Window background behind the Flutter UI.
-40            -->
-41            <meta-data
-42                android:name="io.flutter.embedding.android.NormalTheme"
-43                android:resource="@style/NormalTheme" />
+20    <uses-feature
+20-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:26:5-28:35
+21        android:glEsVersion="0x00020000"
+21-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:27:9-41
+22        android:required="true" />
+22-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:28:9-32
+23
+24    <queries>
+24-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:30:5-34:15
+25
+26        <!-- Needs to be explicitly declared on Android R+ -->
+27        <package android:name="com.google.android.apps.maps" />
+27-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:33:9-64
+27-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:33:18-61
+28    </queries>
+29
+30    <application
+31        android:name="android.app.Application"
+32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+32-->[androidx.core:core:1.8.0] C:\Users\vikra\.gradle\caches\transforms-3\3f88ae2c847282c37ef484a82b3eb6e2\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+33        android:debuggable="true"
+34        android:icon="@mipmap/ic_launcher"
+35        android:label="torq_rig22" >
+36        <activity
+37            android:name="com.example.torq_rig22.MainActivity"
+38            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+39            android:exported="true"
+40            android:hardwareAccelerated="true"
+41            android:launchMode="singleTop"
+42            android:theme="@style/LaunchTheme"
+43            android:windowSoftInputMode="adjustResize" >
 44
-45            <intent-filter>
-46                <action android:name="android.intent.action.MAIN" />
-47
-48                <category android:name="android.intent.category.LAUNCHER" />
-49            </intent-filter>
-50        </activity>
-51        <!--
-52             Don't delete the meta-data below.
-53             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-54        -->
-55        <meta-data
-56            android:name="flutterEmbedding"
-57            android:value="2" />
-58
-59        <service
-59-->[:firebase_auth] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
-60            android:name="com.google.firebase.components.ComponentDiscoveryService"
-60-->[:firebase_auth] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:18-89
-61            android:directBootAware="true"
-61-->[com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:35:13-43
-62            android:exported="false" >
-62-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:66:13-37
-63            <meta-data
-63-->[:firebase_auth] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
-64                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
-64-->[:firebase_auth] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
-65                android:value="com.google.firebase.components.ComponentRegistrar" />
-65-->[:firebase_auth] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
-66            <meta-data
-66-->[:firebase_core] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
-67                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-67-->[:firebase_core] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
-68                android:value="com.google.firebase.components.ComponentRegistrar" />
-68-->[:firebase_core] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
-69            <meta-data
-69-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:67:13-69:85
-70                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-70-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:68:17-109
-71                android:value="com.google.firebase.components.ComponentRegistrar" />
-71-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:69:17-82
-72        </service>
-73        <service
-73-->[:geolocator_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:9-16:56
-74            android:name="com.baseflow.geolocator.GeolocatorLocationService"
-74-->[:geolocator_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-77
-75            android:enabled="true"
-75-->[:geolocator_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-35
-76            android:exported="false"
-76-->[:geolocator_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-37
-77            android:foregroundServiceType="location" />
-77-->[:geolocator_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-53
-78
-79        <uses-library
-79-->[androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\transforms-3\c8184ab4f3a3d3a2f6d4da9abf16c7fa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
-80            android:name="androidx.window.extensions"
-80-->[androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\transforms-3\c8184ab4f3a3d3a2f6d4da9abf16c7fa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
-81            android:required="false" />
-81-->[androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\transforms-3\c8184ab4f3a3d3a2f6d4da9abf16c7fa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
-82        <uses-library
-82-->[androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\transforms-3\c8184ab4f3a3d3a2f6d4da9abf16c7fa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
-83            android:name="androidx.window.sidecar"
-83-->[androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\transforms-3\c8184ab4f3a3d3a2f6d4da9abf16c7fa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
-84            android:required="false" />
-84-->[androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\transforms-3\c8184ab4f3a3d3a2f6d4da9abf16c7fa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
-85
-86        <activity
-86-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:27:9-44:20
-87            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-87-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:28:13-80
-88            android:excludeFromRecents="true"
-88-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:29:13-46
-89            android:exported="true"
-89-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:30:13-36
-90            android:launchMode="singleTask"
-90-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:31:13-44
-91            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-91-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:32:13-72
-92            <intent-filter>
-92-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:33:13-43:29
-93                <action android:name="android.intent.action.VIEW" />
-93-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:17-69
-93-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:25-66
-94
-95                <category android:name="android.intent.category.DEFAULT" />
-95-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:17-76
-95-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:27-73
-96                <category android:name="android.intent.category.BROWSABLE" />
-96-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:17-78
-96-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:27-75
-97
-98                <data
-98-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:39:17-42:51
-99                    android:host="firebase.auth"
-99-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:40:21-49
-100                    android:path="/"
-100-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:41:21-37
-101                    android:scheme="genericidp" />
-101-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:42:21-48
-102            </intent-filter>
-103        </activity>
-104        <activity
-104-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:45:9-62:20
-105            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-105-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:46:13-79
-106            android:excludeFromRecents="true"
-106-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:47:13-46
-107            android:exported="true"
-107-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:48:13-36
-108            android:launchMode="singleTask"
-108-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:49:13-44
-109            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-109-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:50:13-72
-110            <intent-filter>
-110-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:51:13-61:29
-111                <action android:name="android.intent.action.VIEW" />
-111-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:17-69
-111-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:25-66
-112
-113                <category android:name="android.intent.category.DEFAULT" />
-113-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:17-76
-113-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:27-73
-114                <category android:name="android.intent.category.BROWSABLE" />
-114-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:17-78
-114-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:27-75
-115
-116                <data
-116-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:39:17-42:51
-117                    android:host="firebase.auth"
-117-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:40:21-49
-118                    android:path="/"
-118-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:41:21-37
-119                    android:scheme="recaptcha" />
-119-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:42:21-48
-120            </intent-filter>
-121        </activity>
+45            <!--
+46                 Specifies an Android theme to apply to this Activity as soon as
+47                 the Android process has started. This theme is visible to the user
+48                 while the Flutter UI initializes. After that, this theme continues
+49                 to determine the Window background behind the Flutter UI.
+50            -->
+51            <meta-data
+52                android:name="io.flutter.embedding.android.NormalTheme"
+53                android:resource="@style/NormalTheme" />
+54
+55            <intent-filter>
+56                <action android:name="android.intent.action.MAIN" />
+57
+58                <category android:name="android.intent.category.LAUNCHER" />
+59            </intent-filter>
+60        </activity>
+61        <!--
+62             Don't delete the meta-data below.
+63             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+64        -->
+65        <meta-data
+66            android:name="flutterEmbedding"
+67            android:value="2" />
+68
+69        <service
+69-->[:firebase_auth] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-14:19
+70            android:name="com.google.firebase.components.ComponentDiscoveryService"
+70-->[:firebase_auth] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:10:18-89
+71            android:directBootAware="true"
+71-->[com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:35:13-43
+72            android:exported="false" >
+72-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:66:13-37
+73            <meta-data
+73-->[:firebase_auth] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+74                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
+74-->[:firebase_auth] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
+75                android:value="com.google.firebase.components.ComponentRegistrar" />
+75-->[:firebase_auth] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+76            <meta-data
+76-->[:firebase_core] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-13:85
+77                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+77-->[:firebase_core] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:12:17-124
+78                android:value="com.google.firebase.components.ComponentRegistrar" />
+78-->[:firebase_core] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:13:17-82
+79            <meta-data
+79-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:67:13-69:85
+80                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+80-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:68:17-109
+81                android:value="com.google.firebase.components.ComponentRegistrar" />
+81-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:69:17-82
+82        </service>
+83        <service
+83-->[:geolocator_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:9-16:56
+84            android:name="com.baseflow.geolocator.GeolocatorLocationService"
+84-->[:geolocator_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-77
+85            android:enabled="true"
+85-->[:geolocator_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-35
+86            android:exported="false"
+86-->[:geolocator_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-37
+87            android:foregroundServiceType="location" />
+87-->[:geolocator_android] C:\Users\vikra\AndroidStudioProjects\torq_rig22\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-53
+88
+89        <uses-library
+89-->[androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\transforms-3\c8184ab4f3a3d3a2f6d4da9abf16c7fa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+90            android:name="androidx.window.extensions"
+90-->[androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\transforms-3\c8184ab4f3a3d3a2f6d4da9abf16c7fa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+91            android:required="false" />
+91-->[androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\transforms-3\c8184ab4f3a3d3a2f6d4da9abf16c7fa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+92        <uses-library
+92-->[androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\transforms-3\c8184ab4f3a3d3a2f6d4da9abf16c7fa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+93            android:name="androidx.window.sidecar"
+93-->[androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\transforms-3\c8184ab4f3a3d3a2f6d4da9abf16c7fa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+94            android:required="false" />
+94-->[androidx.window:window:1.0.0-beta04] C:\Users\vikra\.gradle\caches\transforms-3\c8184ab4f3a3d3a2f6d4da9abf16c7fa\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+95
+96        <activity
+96-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:27:9-44:20
+97            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+97-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:28:13-80
+98            android:excludeFromRecents="true"
+98-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:29:13-46
+99            android:exported="true"
+99-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:30:13-36
+100            android:launchMode="singleTask"
+100-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:31:13-44
+101            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+101-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:32:13-72
+102            <intent-filter>
+102-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:33:13-43:29
+103                <action android:name="android.intent.action.VIEW" />
+103-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:17-69
+103-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:25-66
+104
+105                <category android:name="android.intent.category.DEFAULT" />
+105-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:17-76
+105-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:27-73
+106                <category android:name="android.intent.category.BROWSABLE" />
+106-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:17-78
+106-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:27-75
+107
+108                <data
+108-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:39:17-42:51
+109                    android:host="firebase.auth"
+109-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:40:21-49
+110                    android:path="/"
+110-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:41:21-37
+111                    android:scheme="genericidp" />
+111-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:42:21-48
+112            </intent-filter>
+113        </activity>
+114        <activity
+114-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:45:9-62:20
+115            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+115-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:46:13-79
+116            android:excludeFromRecents="true"
+116-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:47:13-46
+117            android:exported="true"
+117-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:48:13-36
+118            android:launchMode="singleTask"
+118-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:49:13-44
+119            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+119-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:50:13-72
+120            <intent-filter>
+120-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:51:13-61:29
+121                <action android:name="android.intent.action.VIEW" />
+121-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:17-69
+121-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:34:25-66
 122
-123        <provider
-123-->[com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:26:9-31:39
-124            android:name="com.google.firebase.provider.FirebaseInitProvider"
-124-->[com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:27:13-77
-125            android:authorities="com.example.torq_rig22.firebaseinitprovider"
-125-->[com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:28:13-72
-126            android:directBootAware="true"
-126-->[com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:29:13-43
-127            android:exported="false"
-127-->[com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:30:13-37
-128            android:initOrder="100" />
-128-->[com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:31:13-36
-129
-130        <activity
-130-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:23:9-27:75
-131            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-131-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:24:13-93
-132            android:excludeFromRecents="true"
-132-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:25:13-46
-133            android:exported="false"
-133-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:26:13-37
-134            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-134-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:27:13-72
-135        <!--
-136            Service handling Google Sign-In user revocation. For apps that do not integrate with
-137            Google Sign-In, this service will never be started.
-138        -->
-139        <service
-139-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:33:9-37:51
-140            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-140-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:34:13-89
-141            android:exported="true"
-141-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:35:13-36
-142            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-142-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:36:13-107
-143            android:visibleToInstantApps="true" />
-143-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:37:13-48
-144
-145        <activity
-145-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\vikra\.gradle\caches\transforms-3\46ca68433772c31d18c09de6b9a19226\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
-146            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-146-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\vikra\.gradle\caches\transforms-3\46ca68433772c31d18c09de6b9a19226\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
-147            android:exported="false"
-147-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\vikra\.gradle\caches\transforms-3\46ca68433772c31d18c09de6b9a19226\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
-148            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-148-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\vikra\.gradle\caches\transforms-3\46ca68433772c31d18c09de6b9a19226\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
-149
-150        <meta-data
-150-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\3ba8aace93dc5b01f2199770e4c11314\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
-151            android:name="com.google.android.gms.version"
-151-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\3ba8aace93dc5b01f2199770e4c11314\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
-152            android:value="@integer/google_play_services_version" />
-152-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\3ba8aace93dc5b01f2199770e4c11314\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
-153    </application>
-154
-155</manifest>
+123                <category android:name="android.intent.category.DEFAULT" />
+123-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:17-76
+123-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:36:27-73
+124                <category android:name="android.intent.category.BROWSABLE" />
+124-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:17-78
+124-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:37:27-75
+125
+126                <data
+126-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:39:17-42:51
+127                    android:host="firebase.auth"
+127-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:40:21-49
+128                    android:path="/"
+128-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:41:21-37
+129                    android:scheme="recaptcha" />
+129-->[com.google.firebase:firebase-auth:21.0.8] C:\Users\vikra\.gradle\caches\transforms-3\56a673f1da696d5f36c85e0499c32d81\transformed\jetified-firebase-auth-21.0.8\AndroidManifest.xml:42:21-48
+130            </intent-filter>
+131        </activity>
+132
+133        <provider
+133-->[com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:26:9-31:39
+134            android:name="com.google.firebase.provider.FirebaseInitProvider"
+134-->[com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:27:13-77
+135            android:authorities="com.example.torq_rig22.firebaseinitprovider"
+135-->[com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:28:13-72
+136            android:directBootAware="true"
+136-->[com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:29:13-43
+137            android:exported="false"
+137-->[com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:30:13-37
+138            android:initOrder="100" /> <!-- Needs to be explicitly declared on P+ -->
+138-->[com.google.firebase:firebase-common:20.1.2] C:\Users\vikra\.gradle\caches\transforms-3\7fca53f01d5703507969fbede3df792d\transformed\jetified-firebase-common-20.1.2\AndroidManifest.xml:31:13-36
+139        <uses-library
+139-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:39:9-41:40
+140            android:name="org.apache.http.legacy"
+140-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:40:13-50
+141            android:required="false" />
+141-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\8199db6331f08cf339e6f160ef219052\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:41:13-37
+142
+143        <activity
+143-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:23:9-27:75
+144            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+144-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:24:13-93
+145            android:excludeFromRecents="true"
+145-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:25:13-46
+146            android:exported="false"
+146-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:26:13-37
+147            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+147-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:27:13-72
+148        <!--
+149            Service handling Google Sign-In user revocation. For apps that do not integrate with
+150            Google Sign-In, this service will never be started.
+151        -->
+152        <service
+152-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:33:9-37:51
+153            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+153-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:34:13-89
+154            android:exported="true"
+154-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:35:13-36
+155            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+155-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:36:13-107
+156            android:visibleToInstantApps="true" />
+156-->[com.google.android.gms:play-services-auth:20.0.1] C:\Users\vikra\.gradle\caches\transforms-3\f80dfc167dfb2d37a161aea0dda1631b\transformed\jetified-play-services-auth-20.0.1\AndroidManifest.xml:37:13-48
+157
+158        <activity
+158-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\vikra\.gradle\caches\transforms-3\46ca68433772c31d18c09de6b9a19226\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+159            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+159-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\vikra\.gradle\caches\transforms-3\46ca68433772c31d18c09de6b9a19226\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+160            android:exported="false"
+160-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\vikra\.gradle\caches\transforms-3\46ca68433772c31d18c09de6b9a19226\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+161            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+161-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\vikra\.gradle\caches\transforms-3\46ca68433772c31d18c09de6b9a19226\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+162
+163        <meta-data
+163-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\3ba8aace93dc5b01f2199770e4c11314\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+164            android:name="com.google.android.gms.version"
+164-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\3ba8aace93dc5b01f2199770e4c11314\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+165            android:value="@integer/google_play_services_version" />
+165-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\vikra\.gradle\caches\transforms-3\3ba8aace93dc5b01f2199770e4c11314\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+166    </application>
+167
+168</manifest>
